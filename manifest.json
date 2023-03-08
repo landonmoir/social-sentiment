@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Social Sentiment",
+  "version": "1.0.0",
+  "description": "Rates tweets based on the AFINN sentiment analysis with configurable hiding for negative tweets.",
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Popup",
+    "default_popup": "index.html",
+    "default_icon": "logo192.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*"],
+      "js": ["content-script/src/main.tsx"],
+      "media": [],
+      "all_framse": true,
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "128": "logo192.png"
+  }
+}
