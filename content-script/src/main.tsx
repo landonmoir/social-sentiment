@@ -39,6 +39,14 @@ async function init() {
       return parseFloat(result.neut_upper_bound);
     });
 
+  if (neut_lower == undefined || neut_lower == null) {
+    neut_lower = -0.1;
+  }
+
+  if (neut_upper == undefined || neut_lower == null) {
+    neut_upper = 0.1;
+  }
+
   ranges.push(
     {
       min: -5,
