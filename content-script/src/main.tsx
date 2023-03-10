@@ -39,11 +39,11 @@ async function init() {
       return parseFloat(result.neut_upper_bound);
     });
 
-  if (neut_lower == undefined || neut_lower == null) {
+  if (Number.isNaN(neut_lower)) {
     neut_lower = -0.1;
   }
 
-  if (neut_upper == undefined || neut_lower == null) {
+  if (Number.isNaN(neut_upper)) {
     neut_upper = 0.1;
   }
 
@@ -75,8 +75,6 @@ async function init() {
 function evaluate(element: HTMLElement) {
   let text = element.innerHTML;
   let analysis = sentiment.analyze(text);
-
-  console.log({ text: text, anal: analysis });
 
   if (analysis.tokens.length < 3) {
     return;
